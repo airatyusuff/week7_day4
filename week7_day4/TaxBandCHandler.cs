@@ -20,17 +20,20 @@ namespace week7_day4
             NextBandHandler = h;
         }
 
-        public double CalculateTax(double price, double sum)
+        public double CalculateTax(double price, double cumulativeTax)
         {
-            if (price > MinLimit && price < MaxLimit) {
-                return sum + TaxRate * (price - MinLimit);
+            CalculatorHelper helper = new CalculatorHelper(MinLimit, MaxLimit, TaxRate, cumulativeTax, MaxBandTax());
+
+            if (helper.IsPptyWithinBand(price))
+            {
+                return helper.CalculateCurrentTax(price);
             }
 
-            double cumulativeTax = sum + MaxTax();
-            return NextBandHandler.CalculateTax(price, cumulativeTax);
+            double nextCumulativeTax = cumulativeTax + MaxBandTax();
+            return NextBandHandler.CalculateTax(price, nextCumulativeTax);
         }
 
-        private double MaxTax()
+        private double MaxBandTax()
         {
             return TaxRate * TaxBand;
         }

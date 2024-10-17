@@ -19,7 +19,6 @@ namespace week7_day4
 
         public double CalculateTax(double price, double sum)
         {
-            Console.WriteLine(sum);
             return sum + TaxRate * (price - MinLimit);
         }
     }

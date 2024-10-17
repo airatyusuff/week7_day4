@@ -44,5 +44,23 @@ namespace Tests
 
             Assert.That(taxPrice, Is.EqualTo(4700));
         }
+
+        [Test]
+        public void Test_PropertyHasTaxBandC()
+        {
+            var calculator = new TaxCalculator();
+            double taxPrice = calculator.CalculateTax(750000);
+
+            Assert.That(taxPrice, Is.EqualTo(48350));
+        }
+
+        [Test]
+        public void Test_PropertyHasTaxBandD()
+        {
+            var calculator = new TaxCalculator();
+            double taxPrice = calculator.CalculateTax(875000);
+
+            Assert.That(taxPrice, Is.EqualTo(63350));
+        }
     }
 }
