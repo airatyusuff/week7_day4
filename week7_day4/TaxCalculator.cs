@@ -8,20 +8,28 @@ namespace week7_day4
 {
     public class TaxCalculator
     {
+        private IBandHandler NoTaxBand;
+        private IBandHandler TaxBandA;
+        private IBandHandler TaxBandB;
+        private IBandHandler TaxBandC;
+        private IBandHandler TaxBandD;
+
         public TaxCalculator() {
+            NoTaxBand = new TaxNoBandHandler();
+            TaxBandA = new TaxBandAHandler();
+            TaxBandB = new TaxBandBHandler();
+            TaxBandC = new TaxBandCHandler();
+            TaxBandD = new TaxBandDHandler();
+
+            NoTaxBand.SetSuccessor(TaxBandA);
+            TaxBandA.SetSuccessor(TaxBandB);
+            TaxBandB.SetSuccessor(TaxBandC);
+            TaxBandC.SetSuccessor(TaxBandD);
         }
 
         public double CalculateTax(double price)
         {
-            double p = price / 1000;
-
-            Console.WriteLine(p);
-
-            if(p > 145 && p < 250)
-            {
-                return 0.02 * (p - 145) * 1000;
-            }
-            return 0;
+            return NoTaxBand.CalculateTax(price, 0);
         }
     }
 }

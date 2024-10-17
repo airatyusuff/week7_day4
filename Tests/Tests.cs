@@ -19,7 +19,7 @@ namespace Tests
         }
 
         [Test]
-        public void Test_HasNoTax()
+        public void Test_PropertyHasNoTax()
         {
             var calculator = new TaxCalculator();
             double taxPrice = calculator.CalculateTax(130000);
@@ -33,8 +33,16 @@ namespace Tests
             var calculator = new TaxCalculator();
             double taxPrice = calculator.CalculateTax(200000);
 
-            Console.WriteLine(taxPrice);
             Assert.That(taxPrice, Is.EqualTo(1100));
+        }
+
+        [Test]
+        public void Test_PropertyHasTaxBandB()
+        {
+            var calculator = new TaxCalculator();
+            double taxPrice = calculator.CalculateTax(302000);
+
+            Assert.That(taxPrice, Is.EqualTo(4700));
         }
     }
 }
