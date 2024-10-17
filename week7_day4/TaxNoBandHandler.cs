@@ -11,9 +11,9 @@ namespace week7_day4
         private IBandHandler NextBandHandler;
         private double MaxLimit = 145000;
 
-        public void SetSuccessor(IBandHandler h)
+        public void SetSuccessor(IBandHandler successor)
         {
-            NextBandHandler = h;
+            NextBandHandler = successor;
         }
 
         public double CalculateTax(double price, double _)

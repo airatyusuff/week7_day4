@@ -12,9 +12,9 @@ namespace week7_day4
         private double MinLimit = 750000;
         private double TaxRate = 0.12;
 
-        public void SetSuccessor(IBandHandler h)
+        public void SetSuccessor(IBandHandler successor)
         {
-            NextBandHandler = h;
+            NextBandHandler = successor;
         }
 
         public double CalculateTax(double price, double sum)

@@ -12,15 +12,15 @@ namespace week7_day4
         public double MaxLimit;
         public double TaxRate;
         public double MaxTax;
-        public double CumulativeTax;
+        public double TaxBand;
 
-        public BandParamsStruct(double min, double max, double rate, double maxTax, double cTax)
+        public BandParamsStruct(double min, double max, double rate)
         {
             MinLimit = min;
             MaxLimit = max;
             TaxRate = rate;
-            MaxTax = maxTax;
-            CumulativeTax = cTax;
+            TaxBand = max - min;
+            MaxTax = TaxRate * TaxBand;
         }
     }
 }
