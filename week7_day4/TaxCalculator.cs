@@ -8,25 +8,36 @@ namespace week7_day4
 {
     public class TaxCalculator
     {
-        private IBandHandler StarterTaxBand;
+        private List<ITaxBand> bands;
 
         public TaxCalculator() {
-            StarterTaxBand = new TaxNoBandHandler();
-            IBandHandler TaxBandD = new TaxBandDHandler();
-
-            TaxBandWithLimitsHandler TaxBandA = new TaxBandWithLimitsHandler(145000, 250000, 0.02);
-            TaxBandWithLimitsHandler TaxBandB = new TaxBandWithLimitsHandler(250000, 325000, 0.05);
-            TaxBandWithLimitsHandler TaxBandC = new TaxBandWithLimitsHandler(325000, 750000, 0.1);
-
-            StarterTaxBand.SetSuccessor(TaxBandA);
-            TaxBandA.SetSuccessor(TaxBandB);
-            TaxBandB.SetSuccessor(TaxBandC);
-            TaxBandC.SetSuccessor(TaxBandD);
+            bands = new ResidentialTaxBands().CreateTaxBands();
         }
+
+        // need to add a factory method to create different bands
 
         public double CalculateTax(double price)
         {
-            return StarterTaxBand.CalculateTax(price, 0);
+            double totalTax = 0;
+
+            foreach (ITaxBand band in bands) {
+                totalTax += band.Calculate(price);
+            }
+
+            return totalTax;
+        }
+
+        public double CalculateTax(double price, List<ITaxBand> bands)
+        {
+            double totalTax = 0;
+            foreach (ITaxBand band in bands)
+            {
+                totalTax += band.Calculate(price);
+            }
+
+            return totalTax;
         }
     }
+
+    public enum CalculatorTypes { NON_RESIDENTIAL, RESIDENTIAL_WITH_DWELLING };
 }

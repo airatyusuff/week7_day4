@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace week7_day4
 {
-    public interface IBandHandler
+    public interface ITaxBand
     {
-        public void SetSuccessor(IBandHandler h);
-        public double CalculateTax(double price, double cumulativeTax);
+        public double Calculate(double price);
     }
 }
