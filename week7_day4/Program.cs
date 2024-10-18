@@ -11,11 +11,13 @@ namespace week7_day4
         private void Run()
         {
             TaxCalculator calculator = new TaxCalculator();
+            //TaxCalculator calculator = new TaxCalculator(CalculatorTypes.NON_RESIDENTIAL);
 
-            double pptyPrice = 875000;
+            double pptyPrice = 465000;
             double tax = calculator.CalculateTax(pptyPrice);
 
-            Console.WriteLine("The total tax for property of price " + pptyPrice + " is: " + tax );
+            Console.WriteLine(calculator.GetCalcType() + " TAX CALCULATOR");
+            Console.WriteLine("The total tax for property of price " + pptyPrice + " is: " + tax);
         }
     }
 }

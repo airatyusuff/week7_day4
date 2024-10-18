@@ -9,12 +9,26 @@ namespace week7_day4
     public class TaxCalculator
     {
         private List<ITaxBand> bands;
+        private CalculatorTypes calculatorType;
 
         public TaxCalculator() {
             bands = new ResidentialTaxBands().CreateTaxBands();
+            calculatorType = CalculatorTypes.RESIDENTIAL;
         }
-
-        // need to add a factory method to create different bands
+        public TaxCalculator(CalculatorTypes type)
+        {
+            switch (type)
+            {
+                case CalculatorTypes.NON_RESIDENTIAL:
+                    bands = new NonResidentialTaxBands().CreateTaxBands();
+                    calculatorType = CalculatorTypes.NON_RESIDENTIAL;
+                    break;
+                default:
+                    bands = new ResidentialTaxBands().CreateTaxBands();
+                    calculatorType = CalculatorTypes.RESIDENTIAL;
+                    break;
+            }
+        }
 
         public double CalculateTax(double price)
         {
@@ -27,17 +41,9 @@ namespace week7_day4
             return totalTax;
         }
 
-        public double CalculateTax(double price, List<ITaxBand> bands)
+        public CalculatorTypes GetCalcType()
         {
-            double totalTax = 0;
-            foreach (ITaxBand band in bands)
-            {
-                totalTax += band.Calculate(price);
-            }
-
-            return totalTax;
+            return calculatorType;
         }
     }
-
-    public enum CalculatorTypes { NON_RESIDENTIAL, RESIDENTIAL_WITH_DWELLING };
 }

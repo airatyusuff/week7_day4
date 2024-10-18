@@ -62,5 +62,23 @@ namespace Tests
 
             Assert.That(taxPrice, Is.EqualTo(63350));
         }
+
+        [Test]
+        public void Test_NonResidentialPropertyHasTaxBandA()
+        {
+            var calculator = new TaxCalculator(CalculatorTypes.NON_RESIDENTIAL);
+            double taxPrice = calculator.CalculateTax(250000);
+
+            Assert.That(taxPrice, Is.EqualTo(1000));
+        }
+
+        [Test]
+        public void Test_NonResidentialPropertyHasHighestTaxBand()
+        {
+            var calculator = new TaxCalculator(CalculatorTypes.NON_RESIDENTIAL);
+            double taxPrice = calculator.CalculateTax(465000);
+
+            Assert.That(taxPrice, Is.EqualTo(11750));
+        }
     }
 }

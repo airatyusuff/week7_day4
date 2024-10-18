@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace week7_day4
 {
-    public interface ITaxBandsRegime
+    public abstract class TaxBandsFactory
     {
-        public List<ITaxBand> CreateTaxBands();
+        public abstract List<ITaxBand> CreateTaxBands();
     }
 }
