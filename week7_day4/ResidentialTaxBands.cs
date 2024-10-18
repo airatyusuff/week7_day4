@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace week7_day4
 {
-    public class ResidentialTaxBands : TaxBandsFactory
+    public class ResidentialTaxBands : ITaxBandsFactory
     {
-        public override List<ITaxBand> CreateTaxBands()
+        public List<ITaxBand> CreateTaxBands()
         {
             ITaxBand HighestTaxBand = new HighestTaxBand(750000, 0.12);
             ITaxBand TaxBandA = new TaxBandWithLimits(145000, 250000, 0.02);
