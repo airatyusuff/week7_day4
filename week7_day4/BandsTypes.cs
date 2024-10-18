@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace week7_day4
 {
-    public enum CalculatorTypes { RESIDENTIAL, NON_RESIDENTIAL, RESIDENTIAL_WITH_DWELLING };
+    public enum BandsTypes { RESIDENTIAL, NON_RESIDENTIAL, RESIDENTIAL_WITH_DWELLING };
 }

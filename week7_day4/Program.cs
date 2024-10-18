@@ -10,13 +10,15 @@ namespace week7_day4
 
         private void Run()
         {
-            TaxCalculator calculator = new TaxCalculator();
-            //TaxCalculator calculator = new TaxCalculator(CalculatorTypes.NON_RESIDENTIAL);
+            ResidentialTaxBands TaxBands = new ResidentialTaxBands();
+            //NonResidentialTaxBands TaxBands = new NonResidentialTaxBands();
+
+            TaxCalculator calculator = new TaxCalculator(TaxBands);
 
             double pptyPrice = 465000;
             double tax = calculator.CalculateTax(pptyPrice);
 
-            Console.WriteLine(calculator.GetCalcType() + " TAX CALCULATOR");
+            Console.WriteLine(TaxBands.GetBandsType() + " TAX CALCULATOR");
             Console.WriteLine("The total tax for property of price " + pptyPrice + " is: " + tax);
         }
     }

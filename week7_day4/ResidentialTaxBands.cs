@@ -17,5 +17,10 @@ namespace week7_day4
 
             return [TaxBandA, TaxBandB, TaxBandC, HighestTaxBand];
         }
+
+        public override BandsTypes SetBandsType()
+        {
+            return BandsTypes.RESIDENTIAL;
+        }
     }
 }

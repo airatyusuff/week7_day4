@@ -9,25 +9,9 @@ namespace week7_day4
     public class TaxCalculator
     {
         private TaxBandsFactory bandsFactory;
-        private CalculatorTypes calculatorType;
 
-        public TaxCalculator() {
-            bandsFactory = new ResidentialTaxBands();
-            calculatorType = CalculatorTypes.RESIDENTIAL;
-        }
-        public TaxCalculator(CalculatorTypes type)
-        {
-            switch (type)
-            {
-                case CalculatorTypes.NON_RESIDENTIAL:
-                    bandsFactory = new NonResidentialTaxBands();
-                    calculatorType = CalculatorTypes.NON_RESIDENTIAL;
-                    break;
-                default:
-                    bandsFactory = new ResidentialTaxBands();
-                    calculatorType = CalculatorTypes.RESIDENTIAL;
-                    break;
-            }
+        public TaxCalculator(TaxBandsFactory factory) {
+            bandsFactory = factory;
         }
 
         public double CalculateTax(double price)
@@ -40,11 +24,6 @@ namespace week7_day4
             }
 
             return totalTax;
-        }
-
-        public CalculatorTypes GetCalcType()
-        {
-            return calculatorType;
         }
     }
 }
