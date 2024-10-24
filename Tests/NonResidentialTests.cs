@@ -4,13 +4,12 @@ namespace Tests
 {
     public class NonResidentialTests
     {
-        TaxCalculator calculator;
-        TaxBandsFactory TaxBands;
+        TaxBands calculator;
+
         [SetUp]
         public void Setup()
         {
-            TaxBands = new NonResidentialTaxBands();
-            calculator = new TaxCalculator(TaxBands);
+            calculator = new NonResidentialTaxBands().Create();
         }
 
         [Test]

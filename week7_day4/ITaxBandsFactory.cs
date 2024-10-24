@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace week7_day4
 {
-    public interface ITaxBand
+    public interface ITaxBandsFactory
     {
-        public double Calculate(double price);
-        // get band type from here
+        public TaxBands Create();
     }
 }
